@@ -4,3 +4,5 @@ the game piece obtained by the game master (in the form of an executable Ruby pr
 The game ends when the game piece cannot be placed anymore.
 
 The goal of the project is to introduce to basic algorithm and handling of inputs/outputs.
+
+Usage: ./filler_v -f path[map] -p1 path[player1.filler] -p2 path[player2.filler]
