@@ -9,4 +9,5 @@ Usage: ./filler_vm -f path[map] -p1 path[player1.filler] -p2 path[player2.filler
 
 # graphic interface
 
+Uses the 42 Minilibx.
 To enable/disable the graphic interface : put 1/ 0 to GRAPH in filler.h (line 43).

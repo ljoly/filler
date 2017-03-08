@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:33:09 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/08 12:14:46 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/08 21:04:48 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLER_H
 
 # include "../libft/includes/libft.h"
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 
 # define ME specs->letter_me
 # define ENEMY specs->letter_enemy
