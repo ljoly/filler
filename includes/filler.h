@@ -6,15 +6,15 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:33:09 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/05 20:49:22 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/08 12:14:46 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include <stdio.h>
-
 #ifndef FILLER_H
 # define FILLER_H
+
+# include "../libft/includes/libft.h"
+# include "mlx.h"
 
 # define ME specs->letter_me
 # define ENEMY specs->letter_enemy
@@ -30,7 +30,8 @@
 # define ME_Y specs->me_y
 # define NO_SPACE specs->no_space
 # define DIRECTION specs->direction
-# define THE_END specs->the_end
+# define DISTANCE_MAX specs->distance_enemy_max
+# define DISTANCE_ENEMY specs->distance_enemy
 # define X specs->answer_x
 # define Y specs->answer_y
 
@@ -38,6 +39,10 @@
 # define DOWN_RIGHT 1
 # define UP_RIGHT 2
 # define DOWN_LEFT 3
+
+# define GRAPH 1
+# define COLUMNS dsp.columns
+# define LINES dsp.lines
 
 typedef struct	s_specs
 {
@@ -55,14 +60,30 @@ typedef struct	s_specs
 	int			me_y;
 	int			no_space;
 	int			direction;
-	int			the_end;
+	int			distance_enemy_max;
+	int			distance_enemy;
 	int			answer_x;
 	int			answer_y;
+	void		*mlx;
+	void		*win;
 }				t_specs;
 
-void			ft_filler(char *line, t_specs *specs);
+void			ft_filler(t_specs *specs);
+void			get_enemy_last_position(t_specs *specs);
 int				get_direction(t_specs *specs);
-int				check_coordinates(t_specs *specs, int x, int y);
+int				check_coordinates(t_specs *specs, int x, int y, int star);
 void			set_piece(t_specs *specs);
+
+/*
+** Graph
+*/
+
+typedef struct	s_display
+{
+	int			columns;
+	int			lines;
+}				t_display;
+
+void			graph(t_specs *specs);
 
 #endif

@@ -6,12 +6,12 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/03/05 20:49:49 by ljoly            ###   ########.fr        #
+#    Updated: 2017/03/08 13:33:30 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ljoly.filler
-SRCS = main.c filler.c tactics.c check_coordinates.c set_piece.c
+SRCS = main.c filler.c tactics.c check_and_set.c graph.c
 FLAGS = -Wall -Werror -Wextra
 LIBFT = -C ./libft/
 HEADER = -I/includes
@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make $(LIBFT)
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft
+	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft -lmlx -framework OpenGL -framework AppKit
 	@echo "$(GREEN)[✓]$(NC) Executable $(NAME) ready!"
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
@@ -43,7 +43,7 @@ clean:
 	@echo "$(RED)[-]$(NC) Objects cleaned..."
 
 fclean: clean
-	@rm -f libft/libft.a
+	@make $(LIBFT) fclean
 	@rm -f $(NAME)
 	@echo "$(RED)[-]$(NC) Executable $(NAME) cleaned..."
 

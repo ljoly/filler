@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:28:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/02 17:43:09 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/07 11:35:57 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int		ft_store(t_line *lst, char **file)
 	if (!*lst->tab)
 	{
 		free(lst->tab);
-		*file = ft_strnew(0);
+		free(lst);
 		return (0);
 	}
 	ft_newline(lst, file);

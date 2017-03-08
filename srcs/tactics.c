@@ -6,117 +6,75 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 13:18:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/05 20:58:55 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/08 11:42:54 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-static int		go_down_left(t_specs *specs)
-{
-	int		x;
-	int		y;
-
-	y = MAP_Y - 1;
-	while (y >= 0)
-	{
-		x = 0;
-		while (x < MAP_X)
-		{
-			if (check_coordinates(specs, x, y) == 1)
-			{
-				X = x;
-				Y = y;
-				return (1);
-			}
-			x++;
-		}
-		y--;
-	}
-	return (0);
-}
-
-static int		go_up_right(t_specs *specs)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < MAP_Y)
-	{
-		x = MAP_X - 1;
-		while (x >= 0)
-		{
-			if (check_coordinates(specs, x, y) == 1)
-			{
-				X = x;
-				Y = y;
-				return (1);
-			}
-			x--;
-		}
-		y++;
-	}
-	return (0);
-}
-
 static int		go_down_right(t_specs *specs)
 {
 	int		x;
 	int		y;
+	int		ret;
 
-	y = MAP_Y - 1;
-	while (y >= 0)
+	y = MAP_Y + PIECE_Y;
+	while (y > -PIECE_Y)
 	{
-		x = MAP_X - 1;
-		while (x >= 0)
+		x = MAP_X + PIECE_X;
+		while (x > -PIECE_X)
 		{
-			if (check_coordinates(specs, x, y) == 1)
+			if ((ret = check_coordinates(specs, x, y, 0)))
 			{
-				X = x;
-				Y = y;
-				return (1);
+				if (ret < DISTANCE_ENEMY)
+				{
+					DISTANCE_ENEMY = ret;
+					X = x;
+					Y = y;
+				}
 			}
 			x--;
 		}
 		y--;
 	}
-	return (0);
+	return ((DISTANCE_ENEMY < DISTANCE_MAX) ? 1 : 0);
 }
 
 static int		go_up_left(t_specs *specs)
 {
 	int		x;
 	int		y;
+	int		ret;
 
-	y = 0;
+	y = -PIECE_Y;
 	while (y < MAP_Y)
 	{
-		x = 0;
+		x = -PIECE_X;
 		while (x < MAP_X)
 		{
-			if (check_coordinates(specs, x, y) == 1)
+			if ((ret = check_coordinates(specs, x, y, 0)))
 			{
-				X = x;
-				Y = y;
-				return (1);
+				if (ret < DISTANCE_ENEMY)
+				{
+					DISTANCE_ENEMY = ret;
+					X = x;
+					Y = y;
+				}
 			}
 			x++;
 		}
 		y++;
 	}
-	return (0);
+	return ((DISTANCE_ENEMY < DISTANCE_MAX) ? 1 : 0);
 }
 
 int				get_direction(t_specs *specs)
 {
+	DISTANCE_MAX = (MAP_X > MAP_Y ? MAP_X : MAP_Y);
+	DISTANCE_ENEMY = DISTANCE_MAX;
 	if (DIRECTION == UP_LEFT)
 		return (go_up_left(specs));
 	else if (DIRECTION == DOWN_RIGHT)
 		return (go_down_right(specs));
-	else if (DIRECTION == UP_RIGHT)
-		return (go_up_right(specs));
-	else if (DIRECTION == DOWN_LEFT)
-		return (go_down_left(specs));
 	return (0);
 }
