@@ -3,7 +3,7 @@ The concept is simple: two players gain points by placing on a board, one after 
 the game piece obtained by the game master (an executable Ruby program).
 The game ends when both players cannot place a piece anymore.
 
-The goal of the project is to introduce to basic algorithm and handling of inputs/outputs.
+The aim of the project is to introduce to basic algorithm and handling of inputs/outputs.
 
 Usage: ./filler_vm -f path[map] -p1 path[player1.filler] -p2 path[player2.filler]
 
