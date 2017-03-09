@@ -6,15 +6,15 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/03/08 13:33:30 by ljoly            ###   ########.fr        #
+#    Updated: 2017/03/09 14:18:22 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ljoly.filler
 SRCS = main.c filler.c tactics.c check_and_set.c graph.c
 FLAGS = -Wall -Werror -Wextra
-LIBFT = -C ./libft/
-HEADER = -I/includes
+LIBFT = ./libft/
+HEADER = ./includes
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
 OBJ_PATH = ./obj/
 SRCS_PATH = ./srcs/
@@ -28,22 +28,22 @@ NC=\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make $(LIBFT)
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft -lmlx -framework OpenGL -framework AppKit
+	@make -C $(LIBFT)
+	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L $(LIBFT) -lft -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 	@echo "$(GREEN)[✓]$(NC) Executable $(NAME) ready!"
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	@gcc $(FLAGS) -I./libft $(HEADER) -o $@ -c $<
-	@echo "$(GREEN)[✓]$(NC) Compiling objects..."
+	@gcc $(FLAGS) -I $(LIBFT) -o $@ -c $<
+	@echo "$(GREEN)[✓]$(NC) Compiling" "$<"
 
 clean:
-	@make $(LIBFT) clean
+	@make -C $(LIBFT) clean
 	@rm -rf $(OBJ_PATH)
 	@echo "$(RED)[-]$(NC) Objects cleaned..."
 
 fclean: clean
-	@make $(LIBFT) fclean
+	@make -C $(LIBFT) fclean
 	@rm -f $(NAME)
 	@echo "$(RED)[-]$(NC) Executable $(NAME) cleaned..."
 
