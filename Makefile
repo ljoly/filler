@@ -6,7 +6,7 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/03/09 14:18:22 by ljoly            ###   ########.fr        #
+#    Updated: 2017/03/09 19:42:01 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	@gcc $(FLAGS) -I $(LIBFT) -o $@ -c $<
-	@echo "$(GREEN)[✓]$(NC) Compiling" "$<"
+	@echo "$(GREEN)[✓]$(NC) Compiling" $<
 
 clean:
 	@make -C $(LIBFT) clean
