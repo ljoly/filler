@@ -6,7 +6,7 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:13:48 by ljoly             #+#    #+#              #
-#    Updated: 2017/03/13 20:12:13 by ljoly            ###   ########.fr        #
+#    Updated: 2017/03/13 20:48:50 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,20 +37,21 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 SRC_IN_PRINTF = $(addprefix ./srcs/ft_printf/srcs/, $(SRC_PRINTF))
 SRC_PRINTF = deal_flags_char.c deal_flags_int.c deal_with_it_bro.c \
 			 deal_with_it_bro_2.c ft_printf.c get_info.c initialize_struct.c \
-			 put_blanks_and_zeros.c print_char_c.c print_int_d_i.c print_str_s.c \
-			 print_percent.c print_long_ld.c print_long_long_lld.c print_short_hd.c \
-			 print_signed_char_hhd.c print_intmax_t_jd.c deal_flags_unsigned.c \
+			 put_blanks_and_zeros.c print_char_c.c print_int_d_i.c \
+			 print_str_s.c print_percent.c print_long_ld.c \
+			 print_long_long_lld.c print_short_hd.c print_signed_char_hhd.c \
+			 print_intmax_t_jd.c deal_flags_unsigned.c \
 			 print_unsigned_int_u.c print_unsigned_long_lu.c \
 			 print_unsigned_short_hu.c print_unsigned_char_hhu.c \
-			 print_unsigned_long_long_llu.c print_uintmax_t_ju.c deal_flags_hex_get.c\
-			 deal_flags_hex_print.c print_hex_x.c print_hex_long_lx.c \
-			 print_hex_long_long_llx.c print_hex_short_hx.c print_hex_char_hhx.c \
-			 print_pointer_p.c deal_flags_oct_get.c deal_flags_oct_print.c \
-			 print_oct_o.c print_oct_char_hho.c print_oct_short_ho.c \
-			 print_oct_long_lo.c print_oct_long_long_llo.c print_wchar_t_lc.c \
-			 print_wchar_t_ls.c print_binary_b.c print_binary_char_hhb.c \
-			 print_binary_short_hb.c print_binary_long_lb.c \
-			 print_binary_long_long_llb.c
+			 print_unsigned_long_long_llu.c print_uintmax_t_ju.c \
+			 deal_flags_hex_get.c deal_flags_hex_print.c print_hex_x.c \
+			 print_hex_long_lx.c print_hex_long_long_llx.c print_hex_short_hx.c \
+			 print_hex_char_hhx.c print_pointer_p.c deal_flags_oct_get.c \
+			 deal_flags_oct_print.c print_oct_o.c print_oct_char_hho.c \
+			 print_oct_short_ho.c print_oct_long_lo.c print_oct_long_long_llo.c \
+			 print_wchar_t_lc.c print_wchar_t_ls.c print_binary_b.c \
+			 print_binary_char_hhb.c print_binary_short_hb.c \
+			 print_binary_long_lb.c print_binary_long_long_llb.c
 
 
 OBJ = ${SRC:c=o}
@@ -70,13 +71,13 @@ $(NAME):
 	@gcc $(FLAGS) -c $(SRC_IN) $(SRC_IN_PRINTF) -I $(HEADERS)
 	@ar rc $(NAME) $(OBJ) $(OBJ_PRINTF)
 	@ranlib $(NAME)
-	@echo "$(GREEN)[✓]$(NC) Library built..."
+	@echo "$(GREEN)[✓]$(NC) Library $(NAME) built..."
 
 clean:
 	@rm -f $(OBJ) $(OBJ_PRINTF)
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)[-]$(NC) Library cleaned..."
+	@echo "$(RED)[-]$(NC) Library $(NAME) cleaned..."
 
 re: fclean all
