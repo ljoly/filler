@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 18:44:00 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/07 19:11:59 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/13 20:33:04 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void			set_piece(t_specs *specs)
 {
-	ft_putnbr(Y);
-	ft_putchar(' ');
-	ft_putnbr(X);
-	ft_putchar('\n');
+	ft_printf("%d %d\n", Y, X);
 }
 
 static int		get_enemy_distance(t_specs *specs, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:14:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:14:17 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/13 19:49:27 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct	s_list
 {
