@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 11:25:06 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/08 14:05:08 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:47:05 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void		display_im(t_specs *specs, t_display dsp, int *im_ad, int color)
 	int			y;
 
 	y = 0;
-	while (y < 1080 / MAP_Y && y + LINES < 1080)
+	while (y < 720 / MAP_Y && y + LINES < 720)
 	{
 		x = 0;
-		while (x < 1080 / MAP_X && x + COLUMNS < 1080 && y * x < 1080 * 1080)
+		while (x < 720 / MAP_X && x + COLUMNS < 720 && y * x < 720 * 720)
 		{
-			im_ad[((y + LINES) * 1080) + (x + COLUMNS)] = color;
+			im_ad[((y + LINES) * 720) + (x + COLUMNS)] = color;
 			x++;
 		}
 		y++;
@@ -50,10 +50,10 @@ static void		display(t_specs *specs, int *im_ad)
 				display_im(specs, dsp, im_ad, 0xAF0E0E);
 			else
 				display_im(specs, dsp, im_ad, 0x000000);
-			COLUMNS += 1080 / MAP_X;
+			COLUMNS += 720 / MAP_X;
 			x++;
 		}
-		LINES += 1080 / MAP_Y;
+		LINES += 720 / MAP_Y;
 		y++;
 	}
 }
@@ -67,9 +67,9 @@ void			graph(t_specs *specs)
 	int			*im_ad;
 
 	bits = 24;
-	size = 1080;
+	size = 720;
 	end = 0;
-	image = mlx_new_image(specs->mlx, 1080, 1080);
+	image = mlx_new_image(specs->mlx, 720, 720);
 	im_ad = (int*)mlx_get_data_addr(image, &bits, &size, &end);
 	display(specs, im_ad);
 	mlx_put_image_to_window(specs->mlx, specs->win, image, 0, 0);

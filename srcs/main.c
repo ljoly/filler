@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:35:42 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/08 13:29:29 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/03/13 18:45:59 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				main(void)
 	if (GRAPH)
 	{
 		specs->mlx = mlx_init();
-		specs->win = mlx_new_window(specs->mlx, 1080, 1080, "filler");
+		specs->win = mlx_new_window(specs->mlx, 720, 720, "filler");
 		mlx_do_sync(specs->mlx);
 	}
 	ft_filler(specs);
