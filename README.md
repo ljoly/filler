@@ -1,7 +1,7 @@
 # filler
 The concept is simple: two players gain points by placing on a board, one after the other,
-the game piece obtained by the game master (an executable Ruby program).
-The game ends when both players cannot place a piece anymore.
+the game pieces obtained by the game master (a Ruby program).
+The game ends when both players cannot play anymore.
 
 The aim of the project is to introduce to basic algorithm and handling of inputs/outputs.
 
